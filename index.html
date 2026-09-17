@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy – Files</title>
+<meta name="description" content="Privacy policy for Files, the Android file manager (com.exception.filemanager).">
+<style>
+  :root {
+    --bg: #fbfbfd;
+    --surface: #ffffff;
+    --text: #1d1d22;
+    --muted: #5d5d68;
+    --line: #e3e3ea;
+    --accent: #2b5ea7;
+    --note-bg: #eef3fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121216;
+      --surface: #1a1a20;
+      --text: #ececf1;
+      --muted: #a4a4b0;
+      --line: #2e2e37;
+      --accent: #8fb4ec;
+      --note-bg: #1c2433;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  article + article { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+  [lang="ar"] { font-family: "Noto Naskh Arabic", "Segoe UI", Tahoma, system-ui, sans-serif; line-height: 1.9; }
+  .switch { text-align: end; margin: 0 0 1.5rem; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.25; margin: 0 0 1rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.25rem; margin: 2.5rem 0 0.75rem; }
+  p, ul { margin: 0 0 1rem; }
+  ul { padding-inline-start: 1.25rem; }
+  li { margin-bottom: 0.5rem; }
+  a { color: var(--accent); }
+  .meta {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin: 0 0 2rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .meta dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.2rem 1rem; margin: 0; }
+  .meta dt { font-weight: 600; color: var(--text); }
+  .meta dd { margin: 0; overflow-wrap: anywhere; }
+  .summary { background: var(--note-bg); border-radius: 12px; padding: 1rem 1.1rem 0.25rem; }
+  .summary ul { margin-bottom: 0.75rem; }
+  .warning { border-inline-start: 4px solid var(--accent); padding-block: 0.25rem; padding-inline: 1rem 0; font-weight: 600; }
+  code { font-size: 0.9em; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+
+<article id="en" lang="en" dir="ltr">
+  <p class="switch"><a href="#ar" lang="ar" hreflang="ar">العربية</a></p>
+  <h1>Privacy Policy</h1>
+  <div class="meta">
+    <dl>
+      <dt>App</dt><dd>Files for Android (<code>com.exception.filemanager</code>)</dd>
+      <dt>Developer</dt><dd>Hazem Oukal</dd>
+      <dt>Contact</dt><dd><a href="mailto:haex@gmail.com">haex@gmail.com</a></dd>
+      <dt>Last updated</dt><dd>17 September 2026</dd>
+    </dl>
+  </div>
+
+  <h2>The short version</h2>
+  <div class="summary">
+    <ul>
+      <li>Files doesn't collect, sell or share your personal information.</li>
+      <li>The app has no internet permission, so it can't send your files or data anywhere.</li>
+      <li>No ads, no analytics, no tracking and no accounts.</li>
+      <li>Your files, and everything the app learns about them, stay on your device unless you choose to share or export them.</li>
+    </ul>
+  </div>
+
+  <h2>What the app accesses, and why</h2>
+  <p><strong>Your files and media.</strong> To find, group, show and manage your files: browse, open, share, rename, copy, move and delete them. On Android 11 and newer, All files access lets the app manage all of your files; without it, the app can only show photos, videos and audio. On older Android versions, the storage permission covers all files.</p>
+  <p><strong>Which apps are installed.</strong> To show the right name and icon on each group, the app checks whether the apps your files came from are installed. It doesn't access other apps' private data.</p>
+  <p><strong>Fingerprint or face unlock (optional).</strong> Android checks your fingerprint or face. The app never receives biometric data, only whether the check succeeded.</p>
+  <p><strong>Installing APK files.</strong> When you tap an APK file, the app passes it to Android's installer, which asks you to confirm. The app can't install anything by itself.</p>
+  <p><strong>Prevent accidental uninstall (optional).</strong> If you turn this on, the app becomes a device administrator without requesting any administrator powers. It can't lock your screen, erase your device or see your passwords. It only makes Android refuse to uninstall the app until you turn protection off in Settings.</p>
+
+  <h2>What the app stores on your device</h2>
+  <p>All of this is kept in the app's private storage, which other apps can't access.</p>
+  <ul>
+    <li><strong>A file index:</strong> file names, locations, sizes, dates, video lengths and which app each file came from, so groups load quickly. It's rebuilt by scanning your storage.</li>
+    <li><strong>Settings and customisations:</strong> your groups, their names, icons you chose, their order, layouts and quick access.</li>
+    <li><strong>Video positions:</strong> where you stopped in each video, so it can continue from there.</li>
+    <li><strong>The Recycle bin:</strong> files you delete are kept for 30 days so you can restore them, then removed the next time you open the app. You can restore or delete them sooner.</li>
+    <li><strong>The Void:</strong> files you lock are moved inside the app. By default they're encrypted with AES-256-GCM, using a key protected by your PIN. Your PIN itself is never saved. You can turn off "Encrypt Void files" in Settings; files are then stored without encryption, still inside the app's private storage.</li>
+  </ul>
+  <p class="warning">If you forget your PIN, your Void can't be opened. The developer can't recover it either: there's no recovery key and no backdoor.</p>
+
+  <h2>When data leaves your device</h2>
+  <p>Only when you make it happen:</p>
+  <ul>
+    <li><strong>Sharing:</strong> files are sent to the app you pick.</li>
+    <li><strong>Opening with another app:</strong> the file is handed to the app you choose. For videos, the point where you stopped may be passed along so playback continues, and that app may report back where you stopped.</li>
+    <li><strong>Exporting from the Void:</strong> files are copied to the folder you choose.</li>
+  </ul>
+  <p><strong>Android backup.</strong> If backup is turned on for your device, Android may copy the app's settings and customisations, including icons you chose and your video positions (which include the names and locations of those videos), to your Google account, or to a new phone when you transfer your data. The Void, its keys, the Recycle bin and the file index are always left out. Backups are handled by Google under Google's privacy policy, and the developer can't see them.</p>
+  <p><strong>Crash reports.</strong> If your device settings allow it, Google Play may give the developer reports about crashes and freezes that don't identify you. These come from Google Play, not from the app.</p>
+
+  <h2>Deleting your data</h2>
+  <p>Everything the app stores is deleted when you clear the app's storage or uninstall it. That includes the Void and the Recycle bin, so export anything you want to keep first. Your other files stay where they are.</p>
+
+  <h2>Children</h2>
+  <p>Files isn't directed at children, and it doesn't collect personal data from anyone, including children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the new version will be posted on this page with a new "Last updated" date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy or your privacy: <a href="mailto:haex@gmail.com">haex@gmail.com</a></p>
+</article>
+
+<article id="ar" lang="ar" dir="rtl">
+  <p class="switch"><a href="#en" lang="en" hreflang="en">English</a></p>
+  <h1>سياسة الخصوصية</h1>
+  <div class="meta">
+    <dl>
+      <dt>التطبيق</dt><dd>الملفات لأندرويد (<code dir="ltr">com.exception.filemanager</code>)</dd>
+      <dt>المطوّر</dt><dd><bdi>Hazem Oukal</bdi></dd>
+      <dt>التواصل</dt><dd><a href="mailto:haex@gmail.com" dir="ltr">haex@gmail.com</a></dd>
+      <dt>آخر تحديث</dt><dd>17 سبتمبر 2026</dd>
+    </dl>
+  </div>
+
+  <h2>باختصار</h2>
+  <div class="summary">
+    <ul>
+      <li>لا يجمع تطبيق الملفات معلوماتك الشخصية، ولا يبيعها، ولا يشاركها.</li>
+      <li>ليس لدى التطبيق إذن الوصول إلى الإنترنت، لذا لا يستطيع إرسال ملفاتك أو بياناتك إلى أي مكان.</li>
+      <li>لا إعلانات، ولا تحليلات، ولا تتبّع، ولا حسابات.</li>
+      <li>تبقى ملفاتك وكل ما يعرفه التطبيق عنها على جهازك، إلا إذا اخترت مشاركتها أو تصديرها.</li>
+    </ul>
+  </div>
+
+  <h2>ما يصل إليه التطبيق ولماذا</h2>
+  <p><strong>ملفاتك ووسائطك.</strong> للعثور على ملفاتك وتجميعها وعرضها وإدارتها: تصفّحها وفتحها ومشاركتها وإعادة تسميتها ونسخها ونقلها وحذفها. في أندرويد 11 والإصدارات الأحدث، يتيح إذن الوصول إلى جميع الملفات للتطبيق إدارة كل ملفاتك، وبدونه يعرض الصور والفيديوهات والملفات الصوتية فقط. أما في إصدارات أندرويد الأقدم فيشمل إذن التخزين كل الملفات.</p>
+  <p><strong>التطبيقات المثبّتة.</strong> ليعرض الاسم والأيقونة الصحيحين على كل مجموعة، يتحقق التطبيق مما إذا كانت التطبيقات التي جاءت منها ملفاتك مثبّتة. ولا يصل إلى البيانات الخاصة بالتطبيقات الأخرى.</p>
+  <p><strong>فتح القفل بالبصمة أو الوجه (اختياري).</strong> يتحقق أندرويد من بصمتك أو وجهك، ولا يتلقى التطبيق أي بيانات حيوية، بل يعرف فقط هل نجح التحقق.</p>
+  <p><strong>تثبيت ملفات <span dir="ltr">APK</span>.</strong> عند النقر على ملف <span dir="ltr">APK</span>، يسلّمه التطبيق إلى مثبّت أندرويد الذي يطلب منك التأكيد. لا يستطيع التطبيق تثبيت أي شيء بنفسه.</p>
+  <p><strong>منع إلغاء التثبيت غير المقصود (اختياري).</strong> إذا فعّلت هذا الخيار، يصبح التطبيق مشرفًا على الجهاز دون أن يطلب أي صلاحيات إشراف. لا يستطيع قفل شاشتك ولا مسح جهازك ولا رؤية كلمات مرورك، وكل ما يفعله أن أندرويد يرفض إلغاء تثبيت التطبيق حتى توقف الحماية من الإعدادات.</p>
+
+  <h2>ما يحفظه التطبيق على جهازك</h2>
+  <p>يُحفظ كل ذلك في مساحة التطبيق الخاصة التي لا تستطيع التطبيقات الأخرى الوصول إليها.</p>
+  <ul>
+    <li><strong>فهرس الملفات:</strong> أسماء الملفات ومواقعها وأحجامها وتواريخها ومدد الفيديو والتطبيق الذي جاء منه كل ملف، لتظهر المجموعات بسرعة. ويُعاد بناؤه بفحص مساحة التخزين.</li>
+    <li><strong>الإعدادات والتخصيصات:</strong> مجموعاتك وأسماؤها والأيقونات التي اخترتها وترتيبها وطرق عرضها والوصول السريع.</li>
+    <li><strong>مواضع الفيديو:</strong> أين توقفت في كل فيديو، ليُكمل من هناك.</li>
+    <li><strong>سلة المحذوفات:</strong> تُحفظ الملفات التي تحذفها 30 يومًا لتتمكن من استعادتها، ثم تُزال في المرة التالية التي تفتح فيها التطبيق. ويمكنك استعادتها أو حذفها قبل ذلك.</li>
+    <li><strong>الفراغ:</strong> تُنقل الملفات التي تقفلها إلى داخل التطبيق، وتُشفَّر افتراضيًا بخوارزمية <span dir="ltr">AES-256-GCM</span> بمفتاح يحميه رمزك. لا يُحفظ رمزك نفسه أبدًا. يمكنك إيقاف «تشفير ملفات الفراغ» من الإعدادات، وعندها تُحفظ الملفات دون تشفير، لكن داخل مساحة التطبيق الخاصة.</li>
+  </ul>
+  <p class="warning">إن نسيت رمزك فلن يمكن فتح الفراغ، ولا يستطيع المطوّر استعادته أيضًا: لا يوجد مفتاح استرداد ولا باب خلفي.</p>
+
+  <h2>متى تغادر البيانات جهازك</h2>
+  <p>فقط عندما تفعل ذلك بنفسك:</p>
+  <ul>
+    <li><strong>المشاركة:</strong> تُرسل الملفات إلى التطبيق الذي تختاره.</li>
+    <li><strong>الفتح بتطبيق آخر:</strong> يُسلَّم الملف إلى التطبيق الذي تختاره. وفي الفيديو قد يُمرَّر الموضع الذي توقفت عنده ليُكمل التشغيل، وقد يُعيد ذلك التطبيق الموضع الذي توقفت عنده فيه.</li>
+    <li><strong>التصدير من الفراغ:</strong> تُنسخ الملفات إلى المجلد الذي تختاره.</li>
+  </ul>
+  <p><strong>النسخ الاحتياطي في أندرويد.</strong> إذا كان النسخ الاحتياطي مفعّلًا على جهازك، فقد ينسخ أندرويد إعدادات التطبيق وتخصيصاته، ومنها الأيقونات التي اخترتها ومواضع الفيديو (وتتضمن أسماء تلك الفيديوهات ومواقعها)، إلى حسابك في <span dir="ltr">Google</span> أو إلى هاتف جديد عند نقل بياناتك. أما الفراغ ومفاتيحه وسلة المحذوفات وفهرس الملفات فتُستثنى دائمًا. تتولى <span dir="ltr">Google</span> النسخ الاحتياطية وفق سياسة الخصوصية الخاصة بها، ولا يستطيع المطوّر الاطلاع عليها.</p>
+  <p><strong>تقارير الأعطال.</strong> إذا سمحت إعدادات جهازك، قد يزوّد <span dir="ltr">Google Play</span> المطوّر بتقارير عن الأعطال وحالات التجمّد لا تكشف هويتك. تأتي هذه التقارير من <span dir="ltr">Google Play</span> لا من التطبيق.</p>
+
+  <h2>حذف بياناتك</h2>
+  <p>يُحذف كل ما يحفظه التطبيق عند مسح بيانات التطبيق أو إلغاء تثبيته، ويشمل ذلك الفراغ وسلة المحذوفات، لذا صدّر ما تريد الاحتفاظ به أولًا. أما ملفاتك الأخرى فتبقى في مكانها.</p>
+
+  <h2>الأطفال</h2>
+  <p>التطبيق غير موجّه للأطفال، ولا يجمع بيانات شخصية من أي شخص، بمن فيهم الأطفال.</p>
+
+  <h2>التغييرات على هذه السياسة</h2>
+  <p>إذا تغيّرت هذه السياسة، تُنشر النسخة الجديدة في هذه الصفحة مع تاريخ «آخر تحديث» جديد.</p>
+
+  <h2>التواصل</h2>
+  <p>لأي سؤال عن هذه السياسة أو عن خصوصيتك: <a href="mailto:haex@gmail.com" dir="ltr">haex@gmail.com</a></p>
+</article>
+
+</main>
+</body>
+</html>
