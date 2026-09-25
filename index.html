@@ -73,7 +73,7 @@
       <dt>App</dt><dd>Files for Android (<code>com.exception.filemanager</code>)</dd>
       <dt>Developer</dt><dd>Hazem Oukal</dd>
       <dt>Contact</dt><dd><a href="mailto:haex@gmail.com">haex@gmail.com</a></dd>
-      <dt>Last updated</dt><dd>17 September 2026</dd>
+      <dt>Last updated</dt><dd>25 September 2026</dd>
     </dl>
   </div>
 
@@ -84,26 +84,28 @@
       <li>The app has no internet permission, so it can't send your files or data anywhere.</li>
       <li>No ads, no analytics, no tracking and no accounts.</li>
       <li>Your files, and everything the app learns about them, stay on your device unless you choose to share or export them.</li>
+      <li>Your Void PIN is never saved, and when the app asks you to confirm your screen lock, Android does the checking.</li>
     </ul>
   </div>
 
   <h2>What the app accesses, and why</h2>
   <p><strong>Your files and media.</strong> To find, group, show and manage your files: browse, open, share, rename, copy, move and delete them. On Android 11 and newer, All files access lets the app manage all of your files; without it, the app can only show photos, videos and audio. On older Android versions, the storage permission covers all files.</p>
   <p><strong>Which apps are installed.</strong> To show the right name and icon on each group, the app checks whether the apps your files came from are installed. It doesn't access other apps' private data.</p>
-  <p><strong>Fingerprint or face unlock (optional).</strong> Android checks your fingerprint or face. The app never receives biometric data, only whether the check succeeded.</p>
-  <p><strong>Installing APK files.</strong> When you tap an APK file, the app passes it to Android's installer, which asks you to confirm. The app can't install anything by itself.</p>
+  <p><strong>Fingerprint or face unlock (optional).</strong> You can let a fingerprint (or, on phones that support it, your face) open the Void in place of your PIN. Android checks it; the app never receives biometric data, only whether the check succeeded. To make this work, a second copy of the Void's key is sealed with a key that Android keeps for the app and releases only after a successful check. Android invalidates that key when the fingerprints on your phone change, so the copy can no longer be opened and the shortcut switches off until you turn it back on. Your PIN keeps working regardless.</p>
+  <p><strong>Your screen lock (only when setting or changing the Void PIN).</strong> If your phone has a screen lock, Android asks you to confirm it before you set or change the Void PIN: the PIN, pattern or password you unlock the phone with, or a fingerprint or face. Android performs the check itself. The app never sees your screen-lock credential and only learns whether the check passed. This confirmation can't open the Void and can't recover a forgotten Void PIN.</p>
+  <p><strong>Installing APK files.</strong> When you tap an APK file, the app hands it to the system installer, which asks you to confirm. The app can't install anything by itself.</p>
   <p><strong>Prevent accidental uninstall (optional).</strong> If you turn this on, the app becomes a device administrator without requesting any administrator powers. It can't lock your screen, erase your device or see your passwords. It only makes Android refuse to uninstall the app until you turn protection off in Settings.</p>
 
   <h2>What the app stores on your device</h2>
   <p>All of this is kept in the app's private storage, which other apps can't access.</p>
   <ul>
     <li><strong>A file index:</strong> file names, locations, sizes, dates, video lengths and which app each file came from, so groups load quickly. It's rebuilt by scanning your storage.</li>
-    <li><strong>Settings and customisations:</strong> your groups, their names, icons you chose, their order, layouts and quick access.</li>
+    <li><strong>Settings and customisations:</strong> your groups, including any you merged, their names, icons you chose, their order and the order of sections inside them, layouts, quick access, the short-video length, and which apps you chose to show in Shorts and Videos.</li>
     <li><strong>Video positions:</strong> where you stopped in each video, so it can continue from there.</li>
     <li><strong>The Recycle bin:</strong> files you delete are kept for 30 days so you can restore them, then removed the next time you open the app. You can restore or delete them sooner.</li>
-    <li><strong>The Void:</strong> files you lock are moved inside the app. By default they're encrypted with AES-256-GCM, using a key protected by your PIN. Your PIN itself is never saved. You can turn off "Encrypt Void files" in Settings; files are then stored without encryption, still inside the app's private storage.</li>
+    <li><strong>The Void:</strong> files you lock are moved inside the app and always encrypted with AES-256-GCM, using a random key that is itself locked with a key derived from your PIN (PBKDF2-HMAC-SHA256). The Void asks you to choose a PIN before the first file goes in, and nothing can be moved into it without one. Your PIN itself is never saved. Changing the PIN re-locks the key, not the files.</li>
   </ul>
-  <p class="warning">If you forget your PIN, your Void can't be opened. The developer can't recover it either: there's no recovery key and no backdoor.</p>
+  <p class="warning">If you forget your PIN, the files in the Void can't be decrypted, and the developer can't help: there's no reset, no recovery key and no backdoor. If fingerprint unlock is on, it will still open the Void until the fingerprints on your phone change, but the PIN can't be changed without the current one. Use that time to put your files back or export them; the only way to start again is to clear the app's storage, which deletes everything still in the Void.</p>
 
   <h2>When data leaves your device</h2>
   <p>Only when you make it happen:</p>
@@ -112,11 +114,11 @@
     <li><strong>Opening with another app:</strong> the file is handed to the app you choose. For videos, the point where you stopped may be passed along so playback continues, and that app may report back where you stopped.</li>
     <li><strong>Exporting from the Void:</strong> files are copied to the folder you choose.</li>
   </ul>
-  <p><strong>Android backup.</strong> If backup is turned on for your device, Android may copy the app's settings and customisations, including icons you chose and your video positions (which include the names and locations of those videos), to your Google account, or to a new phone when you transfer your data. The Void, its keys, the Recycle bin and the file index are always left out. Backups are handled by Google under Google's privacy policy, and the developer can't see them.</p>
+  <p><strong>Android backup.</strong> If backup is turned on for your device, Android may copy the app's settings and customisations, including group names, icons you chose, your Shorts and Videos app choices and your video positions (which include the names and locations of those videos), to your Google account, or to a new phone when you transfer your data. The Void, its keys, the Recycle bin and the file index are always left out; because custom groups and files you added to groups by hand are stored in the file index, they stay on the phone too. Backups are handled by Google under Google's privacy policy, and the developer can't see them.</p>
   <p><strong>Crash reports.</strong> If your device settings allow it, Google Play may give the developer reports about crashes and freezes that don't identify you. These come from Google Play, not from the app.</p>
 
   <h2>Deleting your data</h2>
-  <p>Everything the app stores is deleted when you clear the app's storage or uninstall it. That includes the Void and the Recycle bin, so export anything you want to keep first. Your other files stay where they are.</p>
+  <p>Everything the app stores is deleted when you clear the app's storage or uninstall it. That includes the Void, its PIN and the Recycle bin, so export anything you want to keep first. Your other files stay where they are.</p>
 
   <h2>Children</h2>
   <p>Files isn't directed at children, and it doesn't collect personal data from anyone, including children.</p>
@@ -136,7 +138,7 @@
       <dt>التطبيق</dt><dd>الملفات لأندرويد (<code dir="ltr">com.exception.filemanager</code>)</dd>
       <dt>المطوّر</dt><dd><bdi>Hazem Oukal</bdi></dd>
       <dt>التواصل</dt><dd><a href="mailto:haex@gmail.com" dir="ltr">haex@gmail.com</a></dd>
-      <dt>آخر تحديث</dt><dd>17 سبتمبر 2026</dd>
+      <dt>آخر تحديث</dt><dd>25 سبتمبر 2026</dd>
     </dl>
   </div>
 
@@ -147,26 +149,28 @@
       <li>ليس لدى التطبيق إذن الوصول إلى الإنترنت، لذا لا يستطيع إرسال ملفاتك أو بياناتك إلى أي مكان.</li>
       <li>لا إعلانات، ولا تحليلات، ولا تتبّع، ولا حسابات.</li>
       <li>تبقى ملفاتك وكل ما يعرفه التطبيق عنها على جهازك، إلا إذا اخترت مشاركتها أو تصديرها.</li>
+      <li>لا يُحفظ رمز الفراغ أبدًا، وعندما يطلب التطبيق تأكيد قفل شاشتك فإن أندرويد هو من يتحقق منه.</li>
     </ul>
   </div>
 
   <h2>ما يصل إليه التطبيق ولماذا</h2>
   <p><strong>ملفاتك ووسائطك.</strong> للعثور على ملفاتك وتجميعها وعرضها وإدارتها: تصفّحها وفتحها ومشاركتها وإعادة تسميتها ونسخها ونقلها وحذفها. في أندرويد 11 والإصدارات الأحدث، يتيح إذن الوصول إلى جميع الملفات للتطبيق إدارة كل ملفاتك، وبدونه يعرض الصور والفيديوهات والملفات الصوتية فقط. أما في إصدارات أندرويد الأقدم فيشمل إذن التخزين كل الملفات.</p>
   <p><strong>التطبيقات المثبّتة.</strong> ليعرض الاسم والأيقونة الصحيحين على كل مجموعة، يتحقق التطبيق مما إذا كانت التطبيقات التي جاءت منها ملفاتك مثبّتة. ولا يصل إلى البيانات الخاصة بالتطبيقات الأخرى.</p>
-  <p><strong>فتح القفل بالبصمة أو الوجه (اختياري).</strong> يتحقق أندرويد من بصمتك أو وجهك، ولا يتلقى التطبيق أي بيانات حيوية، بل يعرف فقط هل نجح التحقق.</p>
-  <p><strong>تثبيت ملفات <span dir="ltr">APK</span>.</strong> عند النقر على ملف <span dir="ltr">APK</span>، يسلّمه التطبيق إلى مثبّت أندرويد الذي يطلب منك التأكيد. لا يستطيع التطبيق تثبيت أي شيء بنفسه.</p>
+  <p><strong>فتح القفل بالبصمة أو الوجه (اختياري).</strong> يمكنك السماح لبصمتك (أو لوجهك في الهواتف التي تدعم ذلك) بفتح الفراغ بدلًا من الرمز. يتحقق أندرويد منها، ولا يتلقى التطبيق أي بيانات حيوية، بل يعرف فقط هل نجح التحقق. ولإتمام ذلك تُحفظ نسخة ثانية من مفتاح الفراغ مختومةً بمفتاح يحتفظ به أندرويد للتطبيق ولا يُطلقه إلا بعد تحقق ناجح. ويُبطل أندرويد ذلك المفتاح عندما تتغيّر بصمات هاتفك، فلا يمكن فتح تلك النسخة بعدها ويتوقف الاختصار حتى تعيد تفعيله. ويبقى رمزك يعمل في كل الأحوال.</p>
+  <p><strong>قفل شاشتك (عند تعيين رمز الفراغ أو تغييره فقط).</strong> إذا كان لهاتفك قفل شاشة، يطلب منك أندرويد تأكيده قبل تعيين رمز الفراغ أو تغييره: رمز <span dir="ltr">PIN</span> أو النقش أو كلمة المرور التي تفتح بها الهاتف، أو البصمة أو الوجه. يُجري أندرويد التحقق بنفسه، ولا يرى التطبيق بيانات قفل الشاشة أبدًا، بل يعرف فقط هل نجح التحقق. ولا يفتح هذا التأكيد الفراغ، ولا يستعيد رمزًا نسيته.</p>
+  <p><strong>تثبيت ملفات <span dir="ltr">APK</span>.</strong> عند النقر على ملف <span dir="ltr">APK</span>، يسلّمه التطبيق إلى مثبّت الحزم في النظام الذي يطلب منك التأكيد. لا يستطيع التطبيق تثبيت أي شيء بنفسه.</p>
   <p><strong>منع إلغاء التثبيت غير المقصود (اختياري).</strong> إذا فعّلت هذا الخيار، يصبح التطبيق مشرفًا على الجهاز دون أن يطلب أي صلاحيات إشراف. لا يستطيع قفل شاشتك ولا مسح جهازك ولا رؤية كلمات مرورك، وكل ما يفعله أن أندرويد يرفض إلغاء تثبيت التطبيق حتى توقف الحماية من الإعدادات.</p>
 
   <h2>ما يحفظه التطبيق على جهازك</h2>
   <p>يُحفظ كل ذلك في مساحة التطبيق الخاصة التي لا تستطيع التطبيقات الأخرى الوصول إليها.</p>
   <ul>
     <li><strong>فهرس الملفات:</strong> أسماء الملفات ومواقعها وأحجامها وتواريخها ومدد الفيديو والتطبيق الذي جاء منه كل ملف، لتظهر المجموعات بسرعة. ويُعاد بناؤه بفحص مساحة التخزين.</li>
-    <li><strong>الإعدادات والتخصيصات:</strong> مجموعاتك وأسماؤها والأيقونات التي اخترتها وترتيبها وطرق عرضها والوصول السريع.</li>
+    <li><strong>الإعدادات والتخصيصات:</strong> مجموعاتك، ومنها ما دمجته، وأسماؤها والأيقونات التي اخترتها وترتيبها وترتيب الأقسام داخلها وطرق عرضها والوصول السريع ومدة المقاطع القصيرة والتطبيقات التي اخترت إظهارها في المقاطع القصيرة والفيديوهات.</li>
     <li><strong>مواضع الفيديو:</strong> أين توقفت في كل فيديو، ليُكمل من هناك.</li>
     <li><strong>سلة المحذوفات:</strong> تُحفظ الملفات التي تحذفها 30 يومًا لتتمكن من استعادتها، ثم تُزال في المرة التالية التي تفتح فيها التطبيق. ويمكنك استعادتها أو حذفها قبل ذلك.</li>
-    <li><strong>الفراغ:</strong> تُنقل الملفات التي تقفلها إلى داخل التطبيق، وتُشفَّر افتراضيًا بخوارزمية <span dir="ltr">AES-256-GCM</span> بمفتاح يحميه رمزك. لا يُحفظ رمزك نفسه أبدًا. يمكنك إيقاف «تشفير ملفات الفراغ» من الإعدادات، وعندها تُحفظ الملفات دون تشفير، لكن داخل مساحة التطبيق الخاصة.</li>
+    <li><strong>الفراغ:</strong> تُنقل الملفات التي تقفلها إلى داخل التطبيق وتُشفَّر دائمًا بخوارزمية <span dir="ltr">AES-256-GCM</span> بمفتاح عشوائي يُقفل هو نفسه بمفتاح مستخرج من رمزك بخوارزمية <span dir="ltr">PBKDF2-HMAC-SHA256</span>. يطلب الفراغ اختيار رمز قبل نقل أول ملف إليه، ولا يمكن نقل أي شيء إليه من دونه. لا يُحفظ رمزك نفسه أبدًا. وتغيير الرمز يعيد قفل المفتاح لا الملفات.</li>
   </ul>
-  <p class="warning">إن نسيت رمزك فلن يمكن فتح الفراغ، ولا يستطيع المطوّر استعادته أيضًا: لا يوجد مفتاح استرداد ولا باب خلفي.</p>
+  <p class="warning">إن نسيت رمزك فلن يمكن فك تشفير ملفات الفراغ، ولا يستطيع المطوّر مساعدتك: لا توجد إعادة تعيين ولا مفتاح استرداد ولا باب خلفي. وإذا كان الفتح بالبصمة مفعّلًا فسيبقى يفتح الفراغ إلى أن تتغيّر بصمات هاتفك، لكن لا يمكن تغيير الرمز من دون الرمز الحالي. استغلّ ذلك الوقت لإرجاع ملفاتك أو تصديرها؛ فالسبيل الوحيد للبدء من جديد هو مسح بيانات التطبيق، وهو ما يحذف كل ما بقي في الفراغ.</p>
 
   <h2>متى تغادر البيانات جهازك</h2>
   <p>فقط عندما تفعل ذلك بنفسك:</p>
@@ -175,11 +179,11 @@
     <li><strong>الفتح بتطبيق آخر:</strong> يُسلَّم الملف إلى التطبيق الذي تختاره. وفي الفيديو قد يُمرَّر الموضع الذي توقفت عنده ليُكمل التشغيل، وقد يُعيد ذلك التطبيق الموضع الذي توقفت عنده فيه.</li>
     <li><strong>التصدير من الفراغ:</strong> تُنسخ الملفات إلى المجلد الذي تختاره.</li>
   </ul>
-  <p><strong>النسخ الاحتياطي في أندرويد.</strong> إذا كان النسخ الاحتياطي مفعّلًا على جهازك، فقد ينسخ أندرويد إعدادات التطبيق وتخصيصاته، ومنها الأيقونات التي اخترتها ومواضع الفيديو (وتتضمن أسماء تلك الفيديوهات ومواقعها)، إلى حسابك في <span dir="ltr">Google</span> أو إلى هاتف جديد عند نقل بياناتك. أما الفراغ ومفاتيحه وسلة المحذوفات وفهرس الملفات فتُستثنى دائمًا. تتولى <span dir="ltr">Google</span> النسخ الاحتياطية وفق سياسة الخصوصية الخاصة بها، ولا يستطيع المطوّر الاطلاع عليها.</p>
+  <p><strong>النسخ الاحتياطي في أندرويد.</strong> إذا كان النسخ الاحتياطي مفعّلًا على جهازك، فقد ينسخ أندرويد إعدادات التطبيق وتخصيصاته، ومنها أسماء المجموعات والأيقونات التي اخترتها والتطبيقات التي اخترتها للمقاطع القصيرة والفيديوهات ومواضع الفيديو (وتتضمن أسماء تلك الفيديوهات ومواقعها)، إلى حسابك في <span dir="ltr">Google</span> أو إلى هاتف جديد عند نقل بياناتك. أما الفراغ ومفاتيحه وسلة المحذوفات وفهرس الملفات فتُستثنى دائمًا، ولأن المجموعات المخصّصة والملفات التي أضفتها إلى المجموعات يدويًا محفوظة في فهرس الملفات فإنها تبقى على الهاتف أيضًا. تتولى <span dir="ltr">Google</span> النسخ الاحتياطية وفق سياسة الخصوصية الخاصة بها، ولا يستطيع المطوّر الاطلاع عليها.</p>
   <p><strong>تقارير الأعطال.</strong> إذا سمحت إعدادات جهازك، قد يزوّد <span dir="ltr">Google Play</span> المطوّر بتقارير عن الأعطال وحالات التجمّد لا تكشف هويتك. تأتي هذه التقارير من <span dir="ltr">Google Play</span> لا من التطبيق.</p>
 
   <h2>حذف بياناتك</h2>
-  <p>يُحذف كل ما يحفظه التطبيق عند مسح بيانات التطبيق أو إلغاء تثبيته، ويشمل ذلك الفراغ وسلة المحذوفات، لذا صدّر ما تريد الاحتفاظ به أولًا. أما ملفاتك الأخرى فتبقى في مكانها.</p>
+  <p>يُحذف كل ما يحفظه التطبيق عند مسح بيانات التطبيق أو إلغاء تثبيته، ويشمل ذلك الفراغ ورمزه وسلة المحذوفات، لذا صدّر ما تريد الاحتفاظ به أولًا. أما ملفاتك الأخرى فتبقى في مكانها.</p>
 
   <h2>الأطفال</h2>
   <p>التطبيق غير موجّه للأطفال، ولا يجمع بيانات شخصية من أي شخص، بمن فيهم الأطفال.</p>
