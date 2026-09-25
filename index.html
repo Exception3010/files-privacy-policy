@@ -99,8 +99,8 @@
   <h2>What the app stores on your device</h2>
   <p>All of this is kept in the app's private storage, which other apps can't access.</p>
   <ul>
-    <li><strong>A file index:</strong> file names, locations, sizes, dates, video lengths and which app each file came from, so groups load quickly. It's rebuilt by scanning your storage.</li>
-    <li><strong>Settings and customisations:</strong> your groups, including any you merged, their names, icons you chose, their order and the order of sections inside them, layouts, quick access, the short-video length, and which apps you chose to show in Shorts and Videos.</li>
+    <li><strong>A file index:</strong> file names, locations, sizes, dates, video lengths and which app each file came from, so groups load quickly. It's rebuilt by scanning your storage. Files you mark as favorites are noted here too.</li>
+    <li><strong>Settings and customisations:</strong> your groups, including any you merged, their names, icons you chose, their order and the order of sections inside them, layouts, quick access, the short-video and resume lengths, and which apps you chose to show in Shorts and Videos.</li>
     <li><strong>Video positions:</strong> where you stopped in each video, so it can continue from there.</li>
     <li><strong>The Recycle bin:</strong> files you delete are kept for 30 days so you can restore them, then removed the next time you open the app. You can restore or delete them sooner.</li>
     <li><strong>The Void:</strong> files you lock are moved inside the app and always encrypted with AES-256-GCM, using a random key that is itself locked with a key derived from your PIN (PBKDF2-HMAC-SHA256). The Void asks you to choose a PIN before the first file goes in, and nothing can be moved into it without one. Your PIN itself is never saved. Changing the PIN re-locks the key, not the files.</li>
@@ -114,7 +114,7 @@
     <li><strong>Opening with another app:</strong> the file is handed to the app you choose. For videos, the point where you stopped may be passed along so playback continues, and that app may report back where you stopped.</li>
     <li><strong>Exporting from the Void:</strong> files are copied to the folder you choose.</li>
   </ul>
-  <p><strong>Android backup.</strong> If backup is turned on for your device, Android may copy the app's settings and customisations, including group names, icons you chose, your Shorts and Videos app choices and your video positions (which include the names and locations of those videos), to your Google account, or to a new phone when you transfer your data. The Void, its keys, the Recycle bin and the file index are always left out; because custom groups and files you added to groups by hand are stored in the file index, they stay on the phone too. Backups are handled by Google under Google's privacy policy, and the developer can't see them.</p>
+  <p><strong>Android backup.</strong> If backup is turned on for your device, Android may copy the app's settings and customisations, including group names, icons you chose, your Shorts and Videos app choices and your video positions (which include the names and locations of those videos), to your Google account, or to a new phone when you transfer your data. The Void, its keys, the Recycle bin and the file index are always left out; because custom groups, files you added to groups by hand and your favorites are stored in the file index, they stay on the phone too. Backups are handled by Google under Google's privacy policy, and the developer can't see them.</p>
   <p><strong>Crash reports.</strong> If your device settings allow it, Google Play may give the developer reports about crashes and freezes that don't identify you. These come from Google Play, not from the app.</p>
 
   <h2>Deleting your data</h2>
@@ -164,8 +164,8 @@
   <h2>ما يحفظه التطبيق على جهازك</h2>
   <p>يُحفظ كل ذلك في مساحة التطبيق الخاصة التي لا تستطيع التطبيقات الأخرى الوصول إليها.</p>
   <ul>
-    <li><strong>فهرس الملفات:</strong> أسماء الملفات ومواقعها وأحجامها وتواريخها ومدد الفيديو والتطبيق الذي جاء منه كل ملف، لتظهر المجموعات بسرعة. ويُعاد بناؤه بفحص مساحة التخزين.</li>
-    <li><strong>الإعدادات والتخصيصات:</strong> مجموعاتك، ومنها ما دمجته، وأسماؤها والأيقونات التي اخترتها وترتيبها وترتيب الأقسام داخلها وطرق عرضها والوصول السريع ومدة المقاطع القصيرة والتطبيقات التي اخترت إظهارها في المقاطع القصيرة والفيديوهات.</li>
+    <li><strong>فهرس الملفات:</strong> أسماء الملفات ومواقعها وأحجامها وتواريخها ومدد الفيديو والتطبيق الذي جاء منه كل ملف، لتظهر المجموعات بسرعة. ويُعاد بناؤه بفحص مساحة التخزين. وتُسجَّل فيه أيضًا الملفات التي تضعها في المفضلة.</li>
+    <li><strong>الإعدادات والتخصيصات:</strong> مجموعاتك، ومنها ما دمجته، وأسماؤها والأيقونات التي اخترتها وترتيبها وترتيب الأقسام داخلها وطرق عرضها والوصول السريع ومدة المقاطع القصيرة وحد استئناف الفيديو والتطبيقات التي اخترت إظهارها في المقاطع القصيرة والفيديوهات.</li>
     <li><strong>مواضع الفيديو:</strong> أين توقفت في كل فيديو، ليُكمل من هناك.</li>
     <li><strong>سلة المحذوفات:</strong> تُحفظ الملفات التي تحذفها 30 يومًا لتتمكن من استعادتها، ثم تُزال في المرة التالية التي تفتح فيها التطبيق. ويمكنك استعادتها أو حذفها قبل ذلك.</li>
     <li><strong>الفراغ:</strong> تُنقل الملفات التي تقفلها إلى داخل التطبيق وتُشفَّر دائمًا بخوارزمية <span dir="ltr">AES-256-GCM</span> بمفتاح عشوائي يُقفل هو نفسه بمفتاح مستخرج من رمزك بخوارزمية <span dir="ltr">PBKDF2-HMAC-SHA256</span>. يطلب الفراغ اختيار رمز قبل نقل أول ملف إليه، ولا يمكن نقل أي شيء إليه من دونه. لا يُحفظ رمزك نفسه أبدًا. وتغيير الرمز يعيد قفل المفتاح لا الملفات.</li>
@@ -179,7 +179,7 @@
     <li><strong>الفتح بتطبيق آخر:</strong> يُسلَّم الملف إلى التطبيق الذي تختاره. وفي الفيديو قد يُمرَّر الموضع الذي توقفت عنده ليُكمل التشغيل، وقد يُعيد ذلك التطبيق الموضع الذي توقفت عنده فيه.</li>
     <li><strong>التصدير من الفراغ:</strong> تُنسخ الملفات إلى المجلد الذي تختاره.</li>
   </ul>
-  <p><strong>النسخ الاحتياطي في أندرويد.</strong> إذا كان النسخ الاحتياطي مفعّلًا على جهازك، فقد ينسخ أندرويد إعدادات التطبيق وتخصيصاته، ومنها أسماء المجموعات والأيقونات التي اخترتها والتطبيقات التي اخترتها للمقاطع القصيرة والفيديوهات ومواضع الفيديو (وتتضمن أسماء تلك الفيديوهات ومواقعها)، إلى حسابك في <span dir="ltr">Google</span> أو إلى هاتف جديد عند نقل بياناتك. أما الفراغ ومفاتيحه وسلة المحذوفات وفهرس الملفات فتُستثنى دائمًا، ولأن المجموعات المخصّصة والملفات التي أضفتها إلى المجموعات يدويًا محفوظة في فهرس الملفات فإنها تبقى على الهاتف أيضًا. تتولى <span dir="ltr">Google</span> النسخ الاحتياطية وفق سياسة الخصوصية الخاصة بها، ولا يستطيع المطوّر الاطلاع عليها.</p>
+  <p><strong>النسخ الاحتياطي في أندرويد.</strong> إذا كان النسخ الاحتياطي مفعّلًا على جهازك، فقد ينسخ أندرويد إعدادات التطبيق وتخصيصاته، ومنها أسماء المجموعات والأيقونات التي اخترتها والتطبيقات التي اخترتها للمقاطع القصيرة والفيديوهات ومواضع الفيديو (وتتضمن أسماء تلك الفيديوهات ومواقعها)، إلى حسابك في <span dir="ltr">Google</span> أو إلى هاتف جديد عند نقل بياناتك. أما الفراغ ومفاتيحه وسلة المحذوفات وفهرس الملفات فتُستثنى دائمًا، ولأن المجموعات المخصّصة والملفات التي أضفتها إلى المجموعات يدويًا وملفاتك المفضلة محفوظة في فهرس الملفات فإنها تبقى على الهاتف أيضًا. تتولى <span dir="ltr">Google</span> النسخ الاحتياطية وفق سياسة الخصوصية الخاصة بها، ولا يستطيع المطوّر الاطلاع عليها.</p>
   <p><strong>تقارير الأعطال.</strong> إذا سمحت إعدادات جهازك، قد يزوّد <span dir="ltr">Google Play</span> المطوّر بتقارير عن الأعطال وحالات التجمّد لا تكشف هويتك. تأتي هذه التقارير من <span dir="ltr">Google Play</span> لا من التطبيق.</p>
 
   <h2>حذف بياناتك</h2>
