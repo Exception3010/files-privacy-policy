@@ -1,0 +1,46 @@
+FFmpeg build details
+
+FFmpeg version: 6.0.2 (branch release/6.0)
+Source commit: b37bf81a7a9782438e4fe06a249329e279694494 (2026-10-09)
+Source: https://github.com/FFmpeg/FFmpeg/tree/b37bf81a7a9782438e4fe06a249329e279694494
+        mirror of https://git.ffmpeg.org/ffmpeg.git
+Modifications to FFmpeg: none
+Built: 2026-10-14 with Android NDK r26b (linux-x86_64), minimum API 26
+configure reported: License: LGPL version 2.1 or later
+
+Enabled decoders: vorbis opus flac alac pcm_mulaw pcm_alaw mp3 amrnb amrwb aac ac3 eac3 dca truehd
+
+configure options common to every ABI:
+  --target-os=android
+  --disable-gpl
+  --disable-nonfree
+  --disable-version3
+  --enable-static
+  --disable-shared
+  --disable-doc
+  --disable-programs
+  --disable-everything
+  --disable-avdevice
+  --disable-avformat
+  --disable-swscale
+  --disable-postproc
+  --disable-avfilter
+  --disable-symver
+  --enable-swresample
+  --extra-ldexeflags=-pie
+  --disable-v4l2-m2m
+  --disable-vulkan
+  --enable-decoder=<each decoder above>
+
+Per ABI: armeabi-v7a --arch=arm --cpu=armv7-a --extra-cflags="-march=armv7-a -mfloat-abi=softfp" --extra-ldflags="-Wl,--fix-cortex-a8";
+  arm64-v8a --arch=aarch64 --cpu=armv8-a; x86 --arch=x86 --cpu=i686 --disable-asm; x86_64 --arch=x86_64 --cpu=x86-64 --disable-asm.
+
+Build script: build_ffmpeg.sh from androidx/media tag 1.9.0, libraries/decoder_ffmpeg/src/main/jni,
+  with --disable-gpl --disable-nonfree --disable-version3 added by build-ffmpeg-wsl.sh, which is
+  published with this file at https://exception3010.github.io/files-privacy-policy/third-party.html
+Linked into libffmpegJNI.so by CMakeLists.txt and ffmpeg_jni.cc from the same tag (Apache License 2.0).
+
+armeabi-v7a: all 14 decoders present, libavcodec.a 7096 KB
+arm64-v8a: all 14 decoders present, libavcodec.a 10236 KB
+x86: all 14 decoders present, libavcodec.a 6584 KB
+x86_64: all 14 decoders present, libavcodec.a 9628 KB

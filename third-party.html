@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Third-party software – Files</title>
+<meta name="description" content="Open source notices for Files, the Android file manager (com.exception.filemanager): FFmpeg under the LGPL, with source and build instructions.">
+<style>
+  :root {
+    --bg: #fbfbfd;
+    --surface: #ffffff;
+    --text: #1d1d22;
+    --muted: #5d5d68;
+    --line: #e3e3ea;
+    --accent: #2b5ea7;
+    --note-bg: #eef3fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121216;
+      --surface: #1a1a20;
+      --text: #ececf1;
+      --muted: #a4a4b0;
+      --line: #2e2e37;
+      --accent: #8fb4ec;
+      --note-bg: #1c2433;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  article + article { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+  [lang="ar"] { font-family: "Noto Naskh Arabic", "Segoe UI", Tahoma, system-ui, sans-serif; line-height: 1.9; }
+  .switch { text-align: end; margin: 0 0 1.5rem; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.25; margin: 0 0 1rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.25rem; margin: 2.5rem 0 0.75rem; }
+  p, ul, ol { margin: 0 0 1rem; }
+  ul, ol { padding-inline-start: 1.25rem; }
+  li { margin-bottom: 0.5rem; }
+  a { color: var(--accent); }
+  .meta {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin: 0 0 2rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .meta dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.2rem 1rem; margin: 0; }
+  .meta dt { font-weight: 600; color: var(--text); }
+  .meta dd { margin: 0; overflow-wrap: anywhere; }
+  code { font-size: 0.9em; overflow-wrap: anywhere; }
+  pre { direction: ltr; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem 1.1rem; overflow-x: auto; font-size: 0.85em; line-height: 1.5; }
+</style>
+</head>
+<body>
+<main>
+
+<article id="en" lang="en" dir="ltr">
+  <p class="switch"><a href="#ar" lang="ar" hreflang="ar">العربية</a></p>
+  <h1>Third-party software in Files</h1>
+  <div class="meta">
+    <dl>
+      <dt>App</dt><dd>Files for Android (<code>com.exception.filemanager</code>)</dd>
+      <dt>Developer</dt><dd>Hazem Oukal</dd>
+      <dt>Contact</dt><dd><a href="mailto:haex@gmail.com">haex@gmail.com</a></dd>
+      <dt>Last updated</dt><dd>14 October 2026</dd>
+      <dt>See also</dt><dd><a href="./">Privacy policy</a></dd>
+    </dl>
+  </div>
+
+  <h2>FFmpeg</h2>
+  <p>Files includes parts of <a href="https://ffmpeg.org">FFmpeg</a>: the libavcodec, libavutil and libswresample libraries. They decode audio formats a phone cannot decode on its own, such as the Dolby and DTS sound tracks of many films. FFmpeg is Copyright © 2000–2023 the FFmpeg developers and is licensed under the <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License, version 2.1</a> or later.</p>
+  <p>The FFmpeg in the app is built from unmodified source with only LGPL components enabled. The build is configured with <code>--disable-gpl --disable-nonfree --disable-version3</code>, so nothing under the GPL or non-free terms is included. The libraries are linked, together with a small wrapper from AndroidX Media3 (<code>ffmpeg_jni.cc</code>, Apache License 2.0), into one library file, <code>libffmpegJNI.so</code>, which the app loads at run time.</p>
+
+  <h2>Source code</h2>
+  <ul>
+    <li>FFmpeg 6.0.2 (release/6.0 branch), commit <code>b37bf81a7a9782438e4fe06a249329e279694494</code>: <a href="https://github.com/FFmpeg/FFmpeg/tree/b37bf81a7a9782438e4fe06a249329e279694494">github.com/FFmpeg/FFmpeg</a> (a mirror of <code>https://git.ffmpeg.org/ffmpeg.git</code>). No changes were made to it.</li>
+    <li>Wrapper, CMake file and upstream build script: <a href="https://github.com/androidx/media/tree/1.9.0/libraries/decoder_ffmpeg">androidx/media, tag 1.9.0, <code>libraries/decoder_ffmpeg</code></a>. Used unmodified.</li>
+    <li>The files that make the shipped build, published here: <a href="third-party/build-ffmpeg-wsl.sh">build-ffmpeg-wsl.sh</a> (the developer's script, which adds the three licence flags), <a href="third-party/build_ffmpeg.sh">build_ffmpeg.sh</a>, <a href="third-party/ffmpeg_jni.cc">ffmpeg_jni.cc</a>, <a href="third-party/CMakeLists.txt">CMakeLists.txt</a> and <a href="third-party/BUILD-INFO.txt">BUILD-INFO.txt</a>, which lists the exact decoders enabled, the configure options and the NDK used. The app shows the same file under Settings, About, Open source licences ("FFmpeg build details").</li>
+  </ul>
+
+  <h2>Rebuilding libffmpegJNI.so with your own FFmpeg</h2>
+  <p>As the LGPL provides, you can replace the FFmpeg in the app with a modified one. Build a new <code>libffmpegJNI.so</code> and put it in place of the one in the app package for your device's ABI (an APK is a ZIP file; the library is at <code>lib/&lt;abi&gt;/libffmpegJNI.so</code>). The app loads whichever one is there. The steps are those of the upstream module's README:</p>
+  <ol>
+    <li>Check out <a href="https://github.com/androidx/media/tree/1.9.0">androidx/media at tag 1.9.0</a> and the FFmpeg commit above.</li>
+    <li>Make your changes to FFmpeg.</li>
+    <li>In <code>libraries/decoder_ffmpeg/src/main/jni</code>, link the FFmpeg checkout as <code>ffmpeg</code> and run <code>build_ffmpeg.sh</code> with the Android NDK (r26b was used), host platform <code>linux-x86_64</code>, minimum API 26, and the decoder list given in the app's build details. Add <code>--disable-gpl --disable-nonfree --disable-version3</code> to <code>COMMON_OPTIONS</code> in the script to match the shipped build.</li>
+    <li>Build the module with Gradle (<code>./gradlew :lib-decoder-ffmpeg:assembleRelease</code>); CMake links <code>libffmpegJNI.so</code> from <code>ffmpeg_jni.cc</code> and your libraries.</li>
+  </ol>
+  <p>Written offer: if you would rather receive a copy of these materials, that is the complete FFmpeg source at the commit above, the wrapper source, the CMake file and both build scripts, write to <a href="mailto:haex@gmail.com">haex@gmail.com</a>. The offer is valid for at least three years from the date you received the app, and costs you at most what sending the copy costs.</p>
+
+  <h2>Other libraries</h2>
+  <p>AndroidX Media3 (ExoPlayer), the AndroidX Jetpack and Compose libraries, Kotlin and the kotlinx libraries, and Coil are used under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>. AndroidX DataStore carries a copy of Google's protobuf-lite runtime, which is under the <a href="https://opensource.org/licenses/BSD-3-Clause">BSD 3-Clause License</a>. The notices and both licence texts are shown in the app under Settings, About, Open source licences.</p>
+</article>
+
+<article id="ar" lang="ar" dir="rtl">
+  <p class="switch"><a href="#en" lang="en" hreflang="en">English</a></p>
+  <h1>برمجيات الطرف الثالث في تطبيق الملفات</h1>
+  <div class="meta">
+    <dl>
+      <dt>التطبيق</dt><dd>الملفات لأندرويد (<code>com.exception.filemanager</code>)</dd>
+      <dt>المطوّر</dt><dd>حازم أوقال</dd>
+      <dt>التواصل</dt><dd><a href="mailto:haex@gmail.com">haex@gmail.com</a></dd>
+      <dt>آخر تحديث</dt><dd>14 أكتوبر 2026</dd>
+      <dt>انظر أيضًا</dt><dd><a href="./">سياسة الخصوصية</a></dd>
+    </dl>
+  </div>
+
+  <h2>FFmpeg</h2>
+  <p>يتضمّن تطبيق الملفات أجزاءً من <a href="https://ffmpeg.org">FFmpeg</a>: مكتبات libavcodec وlibavutil وlibswresample. وهي تفكّ ترميز صيغ الصوت التي لا يستطيع الهاتف فكّها بنفسه، مثل مسارات الصوت Dolby وDTS في كثير من الأفلام. حقوق FFmpeg محفوظة © 2000–2023 لمطوّري FFmpeg، وهو مرخّص بموجب <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">رخصة GNU العمومية الصغرى (LGPL)، الإصدار 2.1</a> أو أحدث.</p>
+  <p>بُنيت نسخة FFmpeg في التطبيق من المصدر دون تعديل، مع تفعيل مكوّنات LGPL وحدها. ضُبط البناء بالخيارات <code>--disable-gpl --disable-nonfree --disable-version3</code>، فلا يتضمّن شيئًا خاضعًا لرخصة GPL أو لشروط غير حرّة. وتُربط المكتبات، مع غلاف صغير من AndroidX Media3 (الملف <code>ffmpeg_jni.cc</code>، رخصة Apache 2.0)، في ملف مكتبة واحد هو <code>libffmpegJNI.so</code> يحمّله التطبيق عند التشغيل.</p>
+
+  <h2>الشيفرة المصدرية</h2>
+  <ul>
+    <li>FFmpeg 6.0.2 (فرع release/6.0)، الالتزام <code>b37bf81a7a9782438e4fe06a249329e279694494</code>: <a href="https://github.com/FFmpeg/FFmpeg/tree/b37bf81a7a9782438e4fe06a249329e279694494">github.com/FFmpeg/FFmpeg</a> (مرآة لـ <code>https://git.ffmpeg.org/ffmpeg.git</code>). لم يُجرَ عليه أي تعديل.</li>
+    <li>الغلاف وملف CMake وسكربت البناء الأصلي: <a href="https://github.com/androidx/media/tree/1.9.0/libraries/decoder_ffmpeg">androidx/media، الوسم 1.9.0، المجلد <code>libraries/decoder_ffmpeg</code></a>. استُخدمت دون تعديل.</li>
+    <li>الملفات التي تصنع النسخة المنشورة، منشورة هنا: <a href="third-party/build-ffmpeg-wsl.sh">build-ffmpeg-wsl.sh</a> (سكربت المطوّر الذي يضيف خيارات الترخيص الثلاثة)، و<a href="third-party/build_ffmpeg.sh">build_ffmpeg.sh</a>، و<a href="third-party/ffmpeg_jni.cc">ffmpeg_jni.cc</a>، و<a href="third-party/CMakeLists.txt">CMakeLists.txt</a>، و<a href="third-party/BUILD-INFO.txt">BUILD-INFO.txt</a> الذي يذكر وحدات فكّ الترميز المفعّلة بالضبط وخيارات الضبط وإصدار NDK المستخدم. ويعرض التطبيق الملف نفسه في الإعدادات، حول التطبيق، تراخيص المصادر المفتوحة («تفاصيل بناء FFmpeg»).</li>
+  </ul>
+
+  <h2>إعادة بناء libffmpegJNI.so بنسخة FFmpeg خاصة بك</h2>
+  <p>كما تتيح رخصة LGPL، يمكنك استبدال نسخة FFmpeg في التطبيق بنسخة معدّلة. ابنِ ملف <code>libffmpegJNI.so</code> جديدًا وضعه مكان الموجود في حزمة التطبيق لبنية جهازك (ملف APK هو ملف ZIP، والمكتبة في المسار <code>lib/&lt;abi&gt;/libffmpegJNI.so</code>). يحمّل التطبيق أيّ نسخة يجدها هناك. والخطوات هي خطوات ملف README الخاص بالوحدة الأصلية:</p>
+  <ol>
+    <li>اجلب <a href="https://github.com/androidx/media/tree/1.9.0">androidx/media عند الوسم 1.9.0</a> ونسخة FFmpeg عند الالتزام المذكور أعلاه.</li>
+    <li>أجرِ تعديلاتك على FFmpeg.</li>
+    <li>في المجلد <code>libraries/decoder_ffmpeg/src/main/jni</code>، اربط نسخة FFmpeg باسم <code>ffmpeg</code> وشغّل <code>build_ffmpeg.sh</code> مع Android NDK (استُخدم الإصدار r26b)، ومنصّة المضيف <code>linux-x86_64</code>، والحد الأدنى لواجهة API هو 26، وقائمة وحدات فكّ الترميز المذكورة في تفاصيل البناء داخل التطبيق. أضف <code>--disable-gpl --disable-nonfree --disable-version3</code> إلى <code>COMMON_OPTIONS</code> في السكربت لمطابقة النسخة المنشورة.</li>
+    <li>ابنِ الوحدة بـ Gradle (<code>./gradlew :lib-decoder-ffmpeg:assembleRelease</code>)؛ فيربط CMake ملف <code>libffmpegJNI.so</code> من <code>ffmpeg_jni.cc</code> ومكتباتك.</li>
+  </ol>
+  <p>عرض مكتوب: إن كنت تفضّل الحصول على نسخة من هذه المواد، أي مصدر FFmpeg الكامل عند الالتزام المذكور أعلاه ومصدر الغلاف وملف CMake وسكربتَي البناء، فراسل <a href="mailto:haex@gmail.com">haex@gmail.com</a>. يسري هذا العرض ثلاث سنوات على الأقل من تاريخ حصولك على التطبيق، ولا يكلّفك أكثر من تكلفة إرسال النسخة.</p>
+
+  <h2>مكتبات أخرى</h2>
+  <p>تُستخدم AndroidX Media3 (ExoPlayer) ومكتبات AndroidX Jetpack وCompose وKotlin ومكتبات kotlinx وCoil بموجب <a href="https://www.apache.org/licenses/LICENSE-2.0">رخصة Apache، الإصدار 2.0</a>. وتحمل AndroidX DataStore نسخة من مكتبة protobuf-lite من Google، وهي خاضعة <a href="https://opensource.org/licenses/BSD-3-Clause">لرخصة BSD ذات البنود الثلاثة</a>. وتُعرض الإشعارات ونصّا الرخصتين داخل التطبيق في الإعدادات، حول التطبيق، تراخيص المصادر المفتوحة.</p>
+</article>
+
+</main>
+</body>
+</html>
