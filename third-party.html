@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Third-party software – Files</title>
-<meta name="description" content="Open source notices for Files, the Android file manager (com.exception.filemanager): FFmpeg under the LGPL, with source and build instructions.">
+<title>Third-party software – Exception</title>
+<meta name="description" content="Open source notices for Exception, the Android file manager (com.exception.filemanager): FFmpeg under the LGPL, with source and build instructions.">
 <style>
   :root {
     --bg: #fbfbfd;
@@ -65,10 +65,10 @@
 
 <article id="en" lang="en" dir="ltr">
   <p class="switch"><a href="#ar" lang="ar" hreflang="ar">العربية</a></p>
-  <h1>Third-party software in Files</h1>
+  <h1>Third-party software in Exception</h1>
   <div class="meta">
     <dl>
-      <dt>App</dt><dd>Files for Android (<code>com.exception.filemanager</code>)</dd>
+      <dt>App</dt><dd>Exception for Android (<code>com.exception.filemanager</code>)</dd>
       <dt>Developer</dt><dd>Hazem Oukal</dd>
       <dt>Contact</dt><dd><a href="mailto:haex@gmail.com">haex@gmail.com</a></dd>
       <dt>Last updated</dt><dd>14 October 2026</dd>
@@ -77,7 +77,7 @@
   </div>
 
   <h2>FFmpeg</h2>
-  <p>Files includes parts of <a href="https://ffmpeg.org">FFmpeg</a>: the libavcodec, libavutil and libswresample libraries. They decode audio formats a phone cannot decode on its own, such as the Dolby and DTS sound tracks of many films. FFmpeg is Copyright © 2000–2023 the FFmpeg developers and is licensed under the <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License, version 2.1</a> or later.</p>
+  <p>Exception includes parts of <a href="https://ffmpeg.org">FFmpeg</a>: the libavcodec, libavutil and libswresample libraries. They decode audio formats a phone cannot decode on its own, such as the Dolby and DTS sound tracks of many films. FFmpeg is Copyright © 2000–2023 the FFmpeg developers and is licensed under the <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License, version 2.1</a> or later.</p>
   <p>The FFmpeg in the app is built from unmodified source with only LGPL components enabled. The build is configured with <code>--disable-gpl --disable-nonfree --disable-version3</code>, so nothing under the GPL or non-free terms is included. The libraries are linked, together with a small wrapper from AndroidX Media3 (<code>ffmpeg_jni.cc</code>, Apache License 2.0), into one library file, <code>libffmpegJNI.so</code>, which the app loads at run time.</p>
 
   <h2>Source code</h2>
@@ -103,10 +103,10 @@
 
 <article id="ar" lang="ar" dir="rtl">
   <p class="switch"><a href="#en" lang="en" hreflang="en">English</a></p>
-  <h1>برمجيات الطرف الثالث في تطبيق الملفات</h1>
+  <h1>برمجيات الطرف الثالث في تطبيق Exception</h1>
   <div class="meta">
     <dl>
-      <dt>التطبيق</dt><dd>الملفات لأندرويد (<code>com.exception.filemanager</code>)</dd>
+      <dt>التطبيق</dt><dd>Exception لأندرويد (<code>com.exception.filemanager</code>)</dd>
       <dt>المطوّر</dt><dd>حازم عوكل</dd>
       <dt>التواصل</dt><dd><a href="mailto:haex@gmail.com">haex@gmail.com</a></dd>
       <dt>آخر تحديث</dt><dd>14 أكتوبر 2026</dd>
@@ -115,7 +115,7 @@
   </div>
 
   <h2>FFmpeg</h2>
-  <p>يتضمّن تطبيق الملفات أجزاءً من <a href="https://ffmpeg.org">FFmpeg</a>: مكتبات libavcodec وlibavutil وlibswresample. وهي تفكّ ترميز صيغ الصوت التي لا يستطيع الهاتف فكّها بنفسه، مثل مسارات الصوت Dolby وDTS في كثير من الأفلام. حقوق FFmpeg محفوظة © 2000–2023 لمطوّري FFmpeg، وهو مرخّص بموجب <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">رخصة GNU العمومية الصغرى (LGPL)، الإصدار 2.1</a> أو أحدث.</p>
+  <p>يتضمّن تطبيق Exception أجزاءً من <a href="https://ffmpeg.org">FFmpeg</a>: مكتبات libavcodec وlibavutil وlibswresample. وهي تفكّ ترميز صيغ الصوت التي لا يستطيع الهاتف فكّها بنفسه، مثل مسارات الصوت Dolby وDTS في كثير من الأفلام. حقوق FFmpeg محفوظة © 2000–2023 لمطوّري FFmpeg، وهو مرخّص بموجب <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">رخصة GNU العمومية الصغرى (LGPL)، الإصدار 2.1</a> أو أحدث.</p>
   <p>بُنيت نسخة FFmpeg في التطبيق من المصدر دون تعديل، مع تفعيل مكوّنات LGPL وحدها. ضُبط البناء بالخيارات <code>--disable-gpl --disable-nonfree --disable-version3</code>، فلا يتضمّن شيئًا خاضعًا لرخصة GPL أو لشروط غير حرّة. وتُربط المكتبات، مع غلاف صغير من AndroidX Media3 (الملف <code>ffmpeg_jni.cc</code>، رخصة Apache 2.0)، في ملف مكتبة واحد هو <code>libffmpegJNI.so</code> يحمّله التطبيق عند التشغيل.</p>
 
   <h2>الشيفرة المصدرية</h2>
