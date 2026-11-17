@@ -1,6 +1,6 @@
-# Files – Privacy Policy
+# Exception – Privacy Policy
 
-The privacy policy for **Files**, an Android file manager (`com.exception.filemanager`), in English and Arabic.
+The privacy policy for **Exception** (formerly Files), an Android file manager (`com.exception.filemanager`), in English and Arabic.
 
 Published at https://exception3010.github.io/files-privacy-policy/
 
